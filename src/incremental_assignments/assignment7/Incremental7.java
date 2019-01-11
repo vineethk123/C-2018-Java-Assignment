@@ -1,10 +1,7 @@
 package incremental_assignments.assignment7;
 
-import javax.print.attribute.HashPrintJobAttributeSet;
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,15 +33,14 @@ public class Incremental7 {
             // Get the iterator for charCounts object
             Iterator iterator = charCounts.entrySet().iterator();
 
-            //File file = new File(args[0].replace(".txt", "_char_count.txt");
-            //if (file.createNewFile()) {
-                // Write the counts of characters to a file
-                while (iterator.hasNext()) {
-                    Map.Entry mapEntry = (Map.Entry) iterator.next();
-                    targetContent += mapEntry.getKey() + ", " + mapEntry.getValue() + "\n";
-                }
+            // Get the counts of characters to a file as a string
+            while (iterator.hasNext()) {
+                Map.Entry mapEntry = (Map.Entry) iterator.next();
+                targetContent += mapEntry.getKey() + ", " + mapEntry.getValue() + "\n";
+            }
+
+            // Write the counts to the target file
             Files.write(Paths.get(targetFileName), targetContent.getBytes());
-            //}
         }
         catch(FileNotFoundException e) {
             System.out.println("File doesn't exist. Please check the file name and try again.");
