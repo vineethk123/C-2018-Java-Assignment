@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Assignment1 {
 
-    static String fileType = ".txt";
+    static String fileType = "\\.txt$";
 
     private static void printAbsolutePaths(File[] files) {
         for (File file : files) {
@@ -20,7 +20,7 @@ public class Assignment1 {
         File[] files = dir.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                return name.endsWith("." + fileType);
+                return name.matches(".*\\." + fileType + "$");
             }
         });
 
@@ -48,7 +48,6 @@ public class Assignment1 {
     public static void main(String args[]) {
         String homeDir = System.getProperty("user.home");    // Get the user's home directory
         File home = new File(homeDir);    // Create File instance for the user's home directory
-        File[] files;
 
         while(true) {
             Scanner sc = new Scanner(System.in);
@@ -58,14 +57,6 @@ public class Assignment1 {
             fileType = sc.next();
 
             printDirectoryFiles(home);
-
-            // Get the list of files ending with the given extension
-            files = home.listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                    return name.endsWith("." + fileType);
-                }
-            });
 
         }
     }
