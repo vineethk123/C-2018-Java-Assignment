@@ -1,4 +1,4 @@
-package incremental_assignments.assignment3.assignment5;
+package incremental_assignments.assignment3.question5;
 
 public class ClassTwo extends ClassOne {
 
